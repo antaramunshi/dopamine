@@ -10,17 +10,36 @@
             TextInput:
                 hint_text: "Password"
             Button:
-                hint_text: "Login"
+                text: "Login"
         GridLayout:
             cols:2
             Button:
                 text:"Forgot Password"
             Button:
                 text: "Sign In"
+                on_press: root.sign_up()
+
+<SignUpScreen>:
+    GridLayout:
+        cols:1
+        Label:
+            text: "Username"
+        TextInput:
+            hint_text: "username"
+        Label:
+            text:"Password"
+        TextInput: 
+            hint_text: "Password"
+        Button:
+            text: "Submit"
+            
+        
 <RootWidget>:
 
     LoginScreen:
         name: "login_screen"
+    SignUpScreen:
+        name: "signup_screen"
                 
                 
             
