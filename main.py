@@ -3,17 +3,25 @@ from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import ScreenManager,Screen
+import json 
+from datetime import datetime
 
 Builder.load_file('design.kv')
 
 class LoginScreen(Screen):
     def sign_up(self):
         self.manager.current ="signup_screen"
+
 class RootWidget(ScreenManager):
     pass
+
 class SignUpScreen(Screen):
     def add_user(self,uname,pword):
-        print(uname,pword)
+        with open("users.json") as file:
+            users= json.load(file)
+        users[uname]= {'username':uname , 'password':pword, 'created': datetime.now().strftime("%Y-%m-%d %H-%M-%S") }
+        print(users)
+
 class MainApp(App):
     def build(self):
         return RootWidget()
